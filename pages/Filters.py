@@ -170,7 +170,7 @@ plot_win_rate_hero = win_rate_plot(df_grouped_heros)
 
 stats = [ 'gold', 'gold_spent', 'gold_per_min',
         'xp_per_min', 'kills', 'deaths', 'assists', 'hero_damage', 'duration',
-        'wins', 'matchs','assists']
+        'wins', 'matchs']
 
 aba1, aba2, aba3 = st.tabs(['Win-Rate', 'Statistcs and Results', 'Compare Heros'])
 
