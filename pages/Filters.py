@@ -19,7 +19,7 @@ with st.sidebar:
         game_time = st.slider('Input a final game time',20,80,42,1)
     
     regions =  ['WORLD','EUROPE','US EAST','SINGAPORE','US WEST','AUSTRALIA','AUSTRIA','BRAZIL','STOCKHOLM','PW TELECOM SHANGHAI','PW TELECOM ZHEJIANG','PW TELECOM GUANGDONG','JAPAN','PW UNICOM','DUBAI','CHILE']
-    region = st.sidebar.selectbox('Region', regions)
+    
     region = st.sidebar.selectbox('Region', regions)
     if region == 'WORLD':
         region = ''
