@@ -18,7 +18,8 @@ with st.sidebar:
     else: 
         game_time = st.slider('Input a final game time',20,80,42,1)
     
-    regions = ['WORLD', 'US WEST', 'EUROPE', 'JAPAN', 'SINGAPORE', 'DUBAI', 'AUSTRIALIA', 'STOCKHOLM', 'AUSTRIA', 'BRAZIL', 'SOUTHAFRICA', 'PW TELECOM ZHEJIANG', 'PW TELECOM SHANGHAI', 'PW TELECOM GUANGDONG', 'PW TELECOM WUHAN', 'PW UNICOM', 'PW UNICOM TIANJIN', 'CHILE','PERU', 'INDIA']
+    regions =  ['WORLD','EUROPE','US EAST','SINGAPORE','US WEST','AUSTRALIA','AUSTRIA','BRAZIL','STOCKHOLM','PW TELECOM SHANGHAI','PW TELECOM ZHEJIANG','PW TELECOM GUANGDONG','JAPAN','PW UNICOM','DUBAI','CHILE']
+    region = st.sidebar.selectbox('Region', regions)
     region = st.sidebar.selectbox('Region', regions)
     if region == 'WORLD':
         region = ''
