@@ -11,7 +11,7 @@ st.title('DOTA 2 - A quick analyse')
 st.header('''Walk among the results.''')
 
 ## Tables
-usefull_columns = [
+useful_columns = [
     'match_id', 'account_id', 'hero_id', 'player_slot', 
     'gold', 'gold_spent', 'gold_per_min', 'xp_per_min', 
     'kills', 'deaths', 'assists', 'hero_damage'
@@ -19,12 +19,12 @@ usefull_columns = [
 
 df_players = (
     pd.read_csv("players.csv")
-    .filter(items=usefull_columns, axis=1)
+    .filter(items=useful_columns, axis=1)
 )
 
-usefull_columns = ['match_id', 'duration', 'radiant_win']
+useful_columns = ['match_id', 'duration', 'radiant_win']
 df_matches = (pd.read_csv("match.csv")
-            .filter(items = usefull_columns)
+            .filter(items = useful_columns)
 )
 
 df_heros = pd.read_csv("hero_names.csv")
