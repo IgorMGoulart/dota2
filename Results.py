@@ -13,7 +13,7 @@ st.header('''Walk among the results.''')
 ## Tables
 useful_columns = [
     'match_id', 'account_id', 'hero_id', 'player_slot', 
-    'gold', 'gold_spent', 'gold_per_min', 'xp_per_min', 
+     'gold_spent', 'gold_per_min', 'xp_per_min', 
     'kills', 'deaths', 'assists', 'hero_damage'
 ]
 
