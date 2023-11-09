@@ -1,4 +1,4 @@
-# dota2
+# DOTA2
 Games have always been a passion of mine, and when I saw the database of 500.000 matches of Dota 2 I decided to do some analysis in the results, and now I’ll be sharing my findings it with you.
 
 First of all, Dota 2 is a multiplayer online game where 10 players are divided into 2 teams of 5: Dire and Radiant. Each player selects a hero to play. During the match, there are several important factors that can help you win the game, including kills, assists, gold, damage and game time.
