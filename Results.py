@@ -41,12 +41,12 @@ df_merged = (
 df_merged = df_merged.assign(duration = lambda df : (df.duration/60 ).round(2))
 time = df_merged['duration'].mean().round(2)
 
-wins = df_merged['radiant_win'].value_counts(normalize=True)
-wins_df = pd.DataFrame(wins).reset_index()
-wins_df = wins_df.assign(radiant_win=np.select([wins_df['radiant_win']],
-['Radiant'], 'Dire'))
-wins_df = wins_df.set_index('radiant_win')
-wins_df = wins_df.round(4)*100
+wins_df = (pd.DataFrame(df_merged['radiant_win'].
+                        value_counts(normalize=True)).reset_index())
+
+wins_df = (wins_df.assign(radiant_win=
+                          np.select([wins_df['radiant_win']],['Radiant'], 'Dire'))
+                           .set_index('radiant_win').round(4)*100)
 
 # Setting the times considering that every 10 following players are in the same match and the 5 first are radiant e others dire
 df_merged['is_radiant'] = [True if i % 10 < 5 else False for i in range(len(df_merged))]
@@ -56,32 +56,23 @@ df_merged["wins"] = df_merged.apply(lambda row: not (row["is_radiant"] ^ row["ra
 
 def number_of_matches(df):
     
-    games_per_hero = df.groupby('localized_name').size().reset_index(name = 'matchs')
+    games_per_hero = (df.groupby('localized_name')
+                      .size()
+                      .reset_index(name = 'matchs'))
     
     return games_per_hero
 
 def statiscs_per_hero(df, games_per_hero):
     
     # Group the original DataFrame by the 'localized_name' column and sum the values for each hero.
-    df_grouped_heros = df.groupby('localized_name').sum().reset_index()
-    
-    # Merge the 'games_per_hero' DataFrame with the aggregated 'df_grouped_heros' DataFrame based on the 'localized_name' column.
-    df_grouped_heros = df_grouped_heros.merge(games_per_hero, on='localized_name')
-    
-    #Calculate the avarage time of the matches played.
-    df_grouped_heros = df_grouped_heros.assign(duration=lambda x: (x.duration / x.matchs).round(2))
-
-    # Calculate the win rate as the percentage of wins out of total matches and round it to two decimal places.
-    df_grouped_heros = df_grouped_heros.assign(win_rate=lambda x: (x.wins * 100 / x.matchs).round(2))
-
-    # Calculate the average number of kills per game and round it to two decimal places.
-    df_grouped_heros = df_grouped_heros.assign(kill_game=lambda x: (x.kills / x.matchs).round(2))
-
-    # Calculate the average number of assists per game and round it to two decimal places.
-    df_grouped_heros = df_grouped_heros.assign(assists_game=lambda x: (x.assists / x.matchs).round(2))
-    
-    # Change the hero_damage scale to millions 
-    df_grouped_heros = df_grouped_heros.assign(hero_damage=lambda x: (x.hero_damage / 1000000).round(2))
+    df_grouped_heros = (df.groupby('localized_name').sum().reset_index()
+                        .merge(games_per_hero, on='localized_name')
+                        .assign(duration=lambda df: (df.duration / df.matchs).round(2))
+                        .assign(win_rate=lambda df: (df.wins * 100 / df.matchs).round(2))
+                        .assign(kill_game=lambda df: (df.kills / df.matchs).round(2))
+                        .assign(assists_game=lambda df: (df.assists / df.matchs).round(2))
+                        .assign(hero_damage=lambda df: (df.hero_damage / 1000000).round(2))  
+                       )
     
     return df_grouped_heros
 
