@@ -168,7 +168,7 @@ fig_win_rate_team.update_xaxes(tickfont=dict(size=16))
 
 plot_win_rate_hero = win_rate_plot(df_grouped_heros)
 
-stats = [ 'gold', 'gold_spent', 'gold_per_min',
+stats = [ 'gold_spent', 'gold_per_min',
         'xp_per_min', 'kills', 'deaths', 'assists', 'hero_damage', 'duration',
         'wins', 'matchs']
 
