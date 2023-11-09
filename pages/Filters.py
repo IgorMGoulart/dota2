@@ -198,11 +198,11 @@ with aba3:
     coluna1, coluna2 = st.columns(2)
     with coluna1:
         hero1 = st.selectbox('Hero1', heros)
-        attributes = df_grouped_heros_mean.query(f'localized_name == "{hero1}"').set_index('localized_name').drop(['account_id', 'is_radiant'], axis=1).T
+        attributes = df_grouped_heros_mean.query(f'localized_name == "{hero1}"').set_index('localized_name').drop(['account_id', 'is_radiant', 'cluster'], axis=1).T
         for attribute, value in attributes[hero1].items():
             st.metric(label=f'AVERAGE {attribute.replace("_", " ").upper()}', value=value)
     with coluna2:
         hero2 = st.selectbox('Hero2', heros)
-        attributes = df_grouped_heros_mean.query(f'localized_name == "{hero2}"').set_index('localized_name').drop(['account_id', 'is_radiant'], axis=1).T
+        attributes = df_grouped_heros_mean.query(f'localized_name == "{hero2}"').set_index('localized_name').drop(['account_id', 'is_radiant','cluster'], axis=1).T
         for attribute, value in attributes[hero2].items():
             st.metric(label=f'AVERAGE {attribute.replace("_", " ").upper()}', value=value)
